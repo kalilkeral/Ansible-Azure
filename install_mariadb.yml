@@ -1,15 +1,3 @@
-- name: Wait for all hosts to complete
-  hosts: web001
-  become: yes
-  become_method: sudo
-  become_user: root
-  tasks: 
-    - name: Wait unitil web002 is ready
-      wait_for:
-        path: /tmp/web002
-      delegate_to: ansible.rhlab.ch
-      remote_user: azureadm
-
 #- name: Create user defined databases
 #  mysql_db:
 #    name: "{{ item.name }}"
@@ -21,7 +9,7 @@
 #  tags: mariadb
 
 - name: Install MariaDB 
-  hosts: web001
+  hosts: myVM3 
   become: true
   vars:
     mariadb_bind_address: '0.0.0.0'
