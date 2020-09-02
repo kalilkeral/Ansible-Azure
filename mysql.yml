@@ -1,8 +1,8 @@
 ---
 - name: Install MySQL
-  hosts: test123
+  hosts: all
   become: true
-  remote_user: navdeepd2
+  remote_user: admin
   become_method: sudo
   gather_facts: true
   tasks:
