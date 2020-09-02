@@ -1,5 +1,5 @@
 --- # Install mariadb via ansible on centOS
- - hosts: all
+ - hosts: 20.185.67.86
    user: test
    sudo: no
    vars:
