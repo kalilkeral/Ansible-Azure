@@ -9,7 +9,7 @@
 #  tags: mariadb
 
 - name: Install MariaDB 
-  hosts: myVM3 
+  hosts: 20.185.67.86
   become: true
   vars:
     mariadb_bind_address: '0.0.0.0'
