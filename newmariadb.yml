@@ -1,4 +1,4 @@
-- hosts: databases
+- hosts: all
   user: root
   tasks:
   - name: Install MariaDB repository
