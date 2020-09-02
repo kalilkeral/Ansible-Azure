@@ -1,7 +1,7 @@
 --- # Install mariadb via ansible on centOS
  - hosts: all
    user: test
-   sudo: yes
+   sudo: no
    vars:
      mysql_root_password: passwd
    tasks:
