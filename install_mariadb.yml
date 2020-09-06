@@ -1,3 +1,7 @@
+  hosts: all
+  become: true
+  user: root
+  tasks:
 - name: Create user defined databases
  mysql_db:
    name: "{{ item.name }}"
@@ -9,8 +13,6 @@ state: present
   tags: mariadb
 
 - name: Install MariaDB 
-  hosts: all
-  become: true
   vars:
     mariadb_bind_address: '0.0.0.0'
     mariadb_root_password: '&othErEek97FrewlAyd?'
