@@ -2,15 +2,15 @@
   become: true
   user: root
   tasks:
-- name: Create user defined databases
- mysql_db:
-   name: "{{ item.name }}"
-  login_user: admin
-  login_password: password
-state: present
- with_items: "{{ mariadb_databases }}"
-  register: db_creation
-  tags: mariadb
+#- name: Create user defined databases
+ #mysql_db:
+  # name: "{{ item.name }}"
+  #login_user: admin
+  #login_password: password
+#state: present
+ #with_items: "{{ mariadb_databases }}"
+  #register: db_creation
+  #tags: mariadb
 
 - name: Install MariaDB 
   vars:
