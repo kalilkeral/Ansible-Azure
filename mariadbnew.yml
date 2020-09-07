@@ -1,6 +1,6 @@
 - name: Install MariaDB
   hosts: "{{ variable_host | default('localhost') }}"
-  become: true
+  become: false
 
   vars:
     mariadb_bind_address: '0.0.0.0'
