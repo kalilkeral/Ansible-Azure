@@ -1,17 +1,7 @@
-  hosts: all
-  become: true
-  user: root
+---
+- hosts: "{{ variable_host | default('localhost') }}"
+  become: false
   tasks:
-#- name: Create user defined databases
- #mysql_db:
-  # name: "{{ item.name }}"
-  #login_user: admin
-  #login_password: password
-#state: present
- #with_items: "{{ mariadb_databases }}"
-  #register: db_creation
-  #tags: mariadb
-
 - name: Install MariaDB 
   vars:
     mariadb_bind_address: '0.0.0.0'
@@ -23,5 +13,3 @@
         password: ywIapecJalg6
         priv: wordpress_db.*:ALL
         host: '10.1.1.%'
-#  roles:
- #   - bertvv.mariad
