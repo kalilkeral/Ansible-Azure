@@ -1,9 +1,41 @@
-- hosts: all
-  user: root
-  tasks:
-  - name: Install MariaDB repository
-    apt_repository: repo='deb http://ftp.igh.cnrs.fr/pub/mariadb/repo/10.0/ubuntu trusty main' state=present
-  - name: Add repository key to the system
-    apt_key: keyserver=keyserver.ubuntu.com id=0xcbcb082a1bb943db
-  - name: Install MariaDB Server
-    apt: name=mariadb-server state=latest update_cache=yes
+--- # Install mariadb via ansible on centOS
+ - hosts: appserver
+   user: test
+   sudo: yes
+   vars:
+     mysql_root_password: passwd
+   tasks:
+    - name: Install MYSQL
+      yum:
+        name: mariadb-server #debian: mysql-server
+        state: present
+    - name: Install the Python MySQL Support Libraries
+      yum: pkg=MySQL-python state=latest
+    - name: start mysql server and enable it on reboot
+      service: name=mariadb state=started enabled=true #debian: mysql
+    - name: update mysql root password for all root accounts
+      mysql_user:
+        name: root
+        host: "{{ item }}"
+        password: "{{ mysql_root_password }}"
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+        check_implicit_admin: yes
+        priv: "*.*:ALL,GRANT"
+      with_items:
+        - "{{ ansible_hostname }}"
+        - 127.0.0.1
+        - ::1
+        - localhost
+        - name: Copy the root credentials as .my.cnf file
+      template: src=root.cnf.j2 dest=~/.my.cnf mode=0600
+    - name: Create a New Test DB called MyNewDB
+      mysql_db: name=MyNewDB state=present login_user=root login_password={{ mysql_root_password }}
+      
+#
+#
+#templates/root.cnf.j2
+#
+#[client]
+#user=root
+#password={{ mysql_root_pass }}
