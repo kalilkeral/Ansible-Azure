@@ -1,5 +1,4 @@
 ---
-#- hosts: localhost
   become: false
   tasks:
   - name: Install Nginx Latest
