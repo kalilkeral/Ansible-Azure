@@ -1,10 +1,11 @@
 ---
 - name: Install MySQL
-  hosts: all
-  become: true
-  remote_user: admin
+  hosts: "{{ variable_host | default('localhost') }}"
+  gather_facts: false
+  become: no
+  remote_user: khalil
   become_method: sudo
-  gather_facts: true
+
   tasks:
     - name: "Installing Repo"
       shell: sudo rpm -Uvh http://dev.mysql.com/get/mysql57-community-release-el6-7.noarch.rpm
