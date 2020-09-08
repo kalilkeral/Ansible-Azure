@@ -1,6 +1,9 @@
 ---
 - hosts: "{{ variable_host | default('localhost') }}"
-  become: false
+  gather_facts: false
+  become: no
+  remote_user: khalil
+  
   tasks:
   - name: Install Nginx Latest
     yum:
