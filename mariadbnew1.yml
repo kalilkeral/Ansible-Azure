@@ -1,7 +1,6 @@
 - name: Install MariaDB
   hosts: "{{ variable_host | default('localhost') }}"
   become: false
-  remote_user: azureuser
 
   vars:
     mariadb_bind_address: '0.0.0.0'
