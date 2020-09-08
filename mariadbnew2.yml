@@ -1,0 +1,18 @@
+- name: Install MariaDB
+  hosts: "{{ variable_host | default('localhost') }}"
+  become: false
+  remote_user: khalil
+
+  vars:
+    mariadb_bind_address: '0.0.0.0'
+
+    mariadb_database:
+      - name: wordpress_db
+        state: present
+
+    mariadb_user:
+      - name: wordpress_user
+        host: '%'
+        password: 'wordpress_password'
+        priv: 'wordpress_db.*:ALL'
+        encrypted: false
