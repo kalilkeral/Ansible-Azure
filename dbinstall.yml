@@ -1,10 +1,13 @@
 ---
 - name: MariaDB
-  hosts: all
-  gather_facts: true
-  become: true
+  hosts: "{{ variable_host | default('localhost') }}"
+  gather_facts: false
+  become: no
+  remote_user: khalil
+  
   vars:
     mysql_root_password: "Password1"
+    
   tasks:
     - name: install mariadb
       yum:
@@ -12,11 +15,13 @@
           - mariadb-server
           - python3-PyMySQL
         state: latest
+        
     - name: start mariadb
       service:
         name: mariadb
         enabled: true
         state: started
+        
     - name: mysql_root_password
       mysql_user:
         login_user: root
@@ -25,6 +30,7 @@
         check_implicit_admin: true
         password: "{{ mysql_root_password }}"
         host: localhost
+        
     - name: remove remote root
       mysql_user:
         check_implicit_admin: true
