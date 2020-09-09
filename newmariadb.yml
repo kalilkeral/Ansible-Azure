@@ -1,5 +1,5 @@
 --- # Install mariadb via ansible on centOS
- - hosts: "{{ variable_host | default('localhost') }}"
+   hosts: "{{ variable_host | default('localhost') }}"
    gather_facts: false
    become: no
    remote_user: khalil
