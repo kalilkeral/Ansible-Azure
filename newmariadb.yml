@@ -1,7 +1,7 @@
  - name: Install MariaDB
    hosts: "{{ variable_host | default('localhost') }}"
    gather_facts: false
-   become: yes
+   become: no
    remote_user: khalil
    become_method: sudo
    vars:
