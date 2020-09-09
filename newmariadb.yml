@@ -1,4 +1,4 @@
---- # Install mariadb via ansible on centOS
+ - name: Install MariaDB
    hosts: "{{ variable_host | default('localhost') }}"
    gather_facts: false
    become: no
@@ -27,7 +27,7 @@
       with_items:
         - "{{ ansible_hostname }}"
         - 127.0.0.1
-        - ::1
+        - ::::1
         - localhost
         - name: Copy the root credentials as .my.cnf file
     - name: Create a New Test DB called MyNewDB
