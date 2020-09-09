@@ -3,7 +3,7 @@
    #gather_facts: false
    become: yes
    #remote_user: khalil
-   #become_method: sudo
+   become_method: sudo
    vars:
      mysql_root_password: passwd 
    tasks:
