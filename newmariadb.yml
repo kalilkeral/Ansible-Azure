@@ -1,14 +1,11 @@
 --- # Install mariadb via ansible on centOS
-
  - hosts: "{{ variable_host | default('localhost') }}"
    gather_facts: false
    become: no
    remote_user: khalil
    sudo: yes
-   
    vars:
-     mysql_root_password: passwd
-     
+     mysql_root_password: passwd 
    tasks:
     - name: Install MYSQL
       yum:
@@ -33,7 +30,6 @@
         - ::1
         - localhost
         - name: Copy the root credentials as .my.cnf file
-     
     - name: Create a New Test DB called MyNewDB
       mysql_db: name=MyNewDB state=present login_user=root login_password={{ mysql_root_password }}
       
