@@ -8,7 +8,7 @@
      mysql_root_password: passwd 
    tasks:
     - name: uninstall MYSQL
-      yum:
+      mysql_db:
         name: mysql
         purge: true
         state: removed
