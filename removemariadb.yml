@@ -10,4 +10,4 @@
     - name: uninstall MYSQL
       yum:
         name: mariadb-server
-        state: removed
+        state: absent
