@@ -9,5 +9,5 @@
    tasks:
     - name: uninstall MYSQL
       mysql_db:
-        name: mysql
+        name: MyNewDB
         state: absent
