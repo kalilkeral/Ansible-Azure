@@ -11,4 +11,4 @@
       yum:
         name: mysql
         purge: true
-        state: absent
+        state: removed
