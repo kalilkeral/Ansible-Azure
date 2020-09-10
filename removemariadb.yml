@@ -10,4 +10,5 @@
     - name: uninstall MYSQL
       yum:
         name: mysql
+        purge: true
         state: absent
