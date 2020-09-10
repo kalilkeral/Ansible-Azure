@@ -9,5 +9,5 @@
    tasks:
     - name: uninstall MYSQL
       yum:
-        name: mariadb-server
+        name: MariaDB
         state: absent
