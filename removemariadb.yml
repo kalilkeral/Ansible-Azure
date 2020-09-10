@@ -10,4 +10,4 @@
     - name: uninstall MYSQL
       mysql_db:
         name: mysql
-        state: removed
+        state: absent
