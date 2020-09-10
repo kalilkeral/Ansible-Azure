@@ -10,5 +10,4 @@
     - name: uninstall MYSQL
       mysql_db:
         name: mysql
-        purge: true
         state: removed
