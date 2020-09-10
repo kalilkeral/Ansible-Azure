@@ -1,4 +1,4 @@
-- name: uninstall MariaDB
+ - name: uninstall MariaDB
    hosts: "{{ variable_host | default('localhost') }}"
    #gather_facts: false
    become: yes
@@ -8,6 +8,6 @@
      mysql_root_password: passwd 
    tasks:
     - name: uninstall MYSQL
-        yum:
+      yum:
         name: mariadb-server
         state: removed
